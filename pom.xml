@@ -16,14 +16,34 @@
 
 	<properties>
 		<java.version>17</java.version>
-		<spring.boot.version>3.2.2</spring.boot.version>
+		<!-- Используем стабильную версию, точно доступную в Central -->
+		<spring.boot.version>3.4.3</spring.boot.version>
 		<mapstruct.version>1.5.5.Final</mapstruct.version>
 		<jjwt.version>0.11.5</jjwt.version>
 	</properties>
 
+	<!-- Добавляем репозиторий Central для надежного поиска зависимостей -->
+	<repositories>
+		<repository>
+			<id>central</id>
+			<name>Maven Central Repository</name>
+			<url>https://repo.maven.apache.org/maven2</url>
+		</repository>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
 	<dependencyManagement>
 		<dependencies>
-			<!-- Импорт Spring Boot зависимостей -->
+			<!-- Импортируем Spring Boot BOM, чтобы версии всех стартеров подтягивались автоматически -->
+
+			<!-- Если потребуется, можно явно добавить управление версией для spring-boot-starter-kafka, но в данном случае BOM его задаст -->
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-dependencies</artifactId>
@@ -31,8 +51,13 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-			<!-- Если нужно, можно задать здесь другие зависимости -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-kafka</artifactId>
+				<version>${spring.boot.version}</version>
+			</dependency>
 		</dependencies>
+
 	</dependencyManagement>
 
 	<build>
