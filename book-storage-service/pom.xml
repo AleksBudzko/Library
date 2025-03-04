@@ -88,5 +88,6 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+        <finalName>book-storage-service</finalName>
     </build>
 </project>

@@ -99,5 +99,6 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+        <finalName>book-tracker-service</finalName>
     </build>
 </project>
