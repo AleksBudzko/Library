@@ -92,12 +92,16 @@
 
     <build>
         <plugins>
-            <!-- Spring Boot Maven Plugin -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <!-- Дополнительно можно включить параметр executable, если требуется -->
+                    <executable>true</executable>
+                </configuration>
+                <!-- Обычно, если используется spring-boot-starter-parent или BOM, версия подтягивается автоматически -->
             </plugin>
         </plugins>
-        <finalName>book-tracker-service</finalName>
     </build>
+
 </project>
